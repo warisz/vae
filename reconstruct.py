@@ -32,5 +32,5 @@ with torch.no_grad():
     comparison = torch.stack([x, x_hat], dim=1).view(-1, 3, 64, 64)
     
     # nrow=10 means 10 images per row (exactly 5 pairs per row)
-    save_image(comparison, "50_side_by_side.png", nrow=10)
+    save_image(comparison, "reconstruction.png", nrow=10)
     
