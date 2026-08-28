@@ -1,4 +1,4 @@
-from datasets import load_dataset
+from datasets import load_from_disk
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -7,7 +7,7 @@ from torchvision import transforms
 import matplotlib.pyplot as plt
 
 # ------ DATA -------
-dataset = load_dataset("data/images") 
+dataset = load_from_disk("data/images")
 transform = transforms.Compose([
     transforms.Resize((64,64)),
     transforms.ToTensor(),
