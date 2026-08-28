@@ -3,6 +3,7 @@ from torchvision.utils import save_image
 from datasets import load_from_disk
 from torch.utils.data import DataLoader
 from torchvision import transforms
+from model import VAE
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = VAE(latent_dim=128).to(device)
