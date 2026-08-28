@@ -107,18 +107,4 @@ for epoch in range(20):
         total += loss.item()
     print(f"epoch {epoch:2d}: loss={total/len(loader):7.1f} recon={recon.item():7.1f} kl={kl.item():6.1f}")
 
-# view reconstruction
-model.eval()
-with torch.no_grad():
-    x = next(iter(loader))["pixel_values"][:8].to(device)
-    x_hat, _, _ = model(x)
-
-fig, axes = plt.subplots(2, 8, figsize=(16, 4))
-for i in range(8):
-    axes[0, i].imshow(x[i].permute(1,2,0).cpu());   axes[0, i].axis("off")
-    axes[1, i].imshow(x_hat[i].permute(1,2,0).cpu()); axes[1,i].axis("off")
-axes[0, 0].set_ylabel("input"); axes[1,0].set_ylabel("recon")
-plt.tight_layout(); plt.savefig("recon.png"); plt.show()
-
-
-
+torch.save(model.state_dict(), "vae_weights.pth")
